@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!-- Declara que o documento usa HTML5 -->
+<html lang="pt-BR">
+<!-- lang="pt-BR" informa o idioma da página (ajuda navegadores e leitores de tela) -->
+
+<head>
+    <!-- Codificação de caracteres: garante acentos e ç exibidos corretamente -->
+    <meta charset="UTF-8">
+
+    <!-- Faz a página se adaptar a telas de celular e tablet -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título que aparece na aba do navegador -->
+    <title>TechConnect - Cursos e aulas de informática</title>
+
+    <!-- Fonte Inter do Google Fonts (usada no CSS pela variável --font-main) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Conecta o HTML ao arquivo de estilos -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER: envolve todo o cabeçalho do site -->
+    <header class="header">
+
+        <!-- Container: agrupa o conteúdo do header para facilitar o alinhamento no CSS -->
+        <div class="header-container">
+
+            <!-- LOGO: link que leva para a página inicial -->
+            <a href="index.html" class="logo">
+                <!-- Pequeno elemento visual da logo feito com SVG (decorativo) -->
+                <svg class="logo-icon" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="5" cy="12" r="2"></circle>
+                    <circle cx="19" cy="5" r="2"></circle>
+                    <circle cx="19" cy="19" r="2"></circle>
+                    <line x1="7" y1="12" x2="17" y2="6"></line>
+                    <line x1="7" y1="12" x2="17" y2="18"></line>
+                </svg>
+
+                <!-- Nome da logo em texto; a cor "Connect" poderá ser destacada no CSS -->
+                <span class="logo-text">Tech<span class="logo-highlight">Connect</span></span>
+            </a>
+
+            <!-- BOTÃO DO MENU: aparece só no celular; o script.js escuta o clique nele pelo id -->
+            <button type="button" id="btn-menu" class="btn-menu">☰ Menu</button>
+
+            <!-- NAV: menu de navegação principal do site -->
+            <!-- A classe "main-nav" é a que o JavaScript procura; "nav" continua para o CSS existente -->
+            <nav class="nav main-nav">
+                <!-- Lista de links do menu -->
+                <ul class="nav-list">
+                    <!-- Página atual: usa a classe "active" para ser destacada no CSS -->
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link active">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="cursos.html" class="nav-link">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="aulas.html" class="nav-link">Aulas</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- AÇÕES: área da direita com busca e botão de entrar -->
+            <div class="header-actions">
+
+                <!-- Campo de busca com ícone de lupa -->
+                <div class="search-box">
+                    <!-- Ícone de lupa (decorativo, por isso aria-hidden="true") -->
+                    <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+
+                    <!-- Como o campo não tem texto visível ao lado, aria-label descreve sua função -->
+                    <input type="text" class="search-input" placeholder="Buscar cursos e aulas"
+                        aria-label="Buscar cursos e aulas">
+                </div>
+
+                <!-- Botão de ação: Entrar -->
+                <button type="button" class="btn-login">Entrar</button>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- O script fica no final do body para o HTML já existir quando ele rodar -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

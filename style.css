@@ -1,0 +1,205 @@
+/* Cabeçalho do TechConnect: logo (.logo), menu (.nav), busca (.search-box) e botão (.btn-login) */
+
+
+/* ---------- VARIÁVEIS: cores e fonte guardadas em um só lugar ---------- */
+:root {
+  --color-primary: #00b4ff;        /* azul neon (destaques) */
+  --color-primary-dark: #0086c3;   /* azul neon mais escuro (hover) */
+  --color-text: #ffffff;           /* texto principal */
+  --color-text-light: #9db4d0;     /* texto secundário */
+  --color-border: #1c3556;         /* bordas */
+  --color-bg: #050a14;             /* fundo preto-azulado da página */
+  --color-bg-header: #0a1428;      /* azul-escuro do cabeçalho */
+  --font-main: 'Inter', sans-serif;
+}
+
+
+/* ---------- RESET: tira margens e paddings padrão do navegador ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* padding e borda entram no tamanho total do elemento */
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+}
+
+
+/* ---------- HEADER ---------- */
+.header {
+  background-color: var(--color-bg-header);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Flexbox: coloca logo, menu e ações lado a lado, com espaço entre eles */
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+
+/* ---------- LOGO ---------- */
+/* Flexbox de novo: alinha o ícone e o texto da logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.logo-icon {
+  color: var(--color-primary);
+}
+
+.logo-text {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.logo-highlight {
+  color: var(--color-primary);
+}
+
+
+/* ---------- MENU ---------- */
+/* Flexbox: alinha os links do menu entre si */
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--color-text-light);
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--color-text);
+}
+
+/* Link da página atual: destaque em azul neon */
+.nav-link.active {
+  color: var(--color-primary);
+  font-weight: 600;
+  border-bottom-color: var(--color-primary);
+}
+
+
+/* ---------- AÇÕES: busca e botão ---------- */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* position: relative permite posicionar o ícone dentro deste bloco */
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  padding: 10px 40px 10px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  outline: none;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-main);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-input::placeholder {
+  color: var(--color-text-light);
+}
+
+/* Quando o usuário clica no campo, a borda acende em azul neon */
+.search-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 8px var(--color-primary);
+}
+
+/* position: absolute coloca o ícone sobre o input, à direita */
+.search-icon {
+  position: absolute;
+  right: 14px;
+  color: var(--color-text-light);
+  pointer-events: none; /* o clique passa pelo ícone e chega no input */
+}
+
+.btn-login {
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-login:hover {
+  background-color: var(--color-primary-dark);
+}
+
+
+/* ---------- MENU RESPONSIVO (botão ☰ Menu) ---------- */
+/* No computador o botão fica escondido: o menu já aparece normalmente */
+.btn-menu {
+  display: none;
+  background-color: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.btn-menu:hover {
+  border-color: var(--color-primary);
+}
+
+/* No celular/tablet: o menu começa escondido e a classe "ativo" o mostra */
+@media (max-width: 768px) {
+  .header-container {
+    flex-wrap: wrap;   /* permite o menu descer para uma linha própria */
+  }
+
+  .btn-menu {
+    display: inline-block;
+  }
+
+  .main-nav {
+    display: none;     /* escondido por padrão */
+    width: 100%;
+    order: 3;          /* vai para o fim, abaixo de logo, botão e ações */
+  }
+
+  .main-nav.ativo {
+    display: block;    /* o JavaScript só adiciona/remove "ativo"; o CSS decide a aparência */
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
